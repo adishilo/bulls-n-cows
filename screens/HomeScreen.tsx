@@ -1,17 +1,23 @@
-import React, {ReactNode} from 'react';
-import {View, Text, Button} from 'react-native';
+import React, { ReactNode } from 'react';
+import { View } from 'react-native';
+import { NavigationInjectedProps, withNavigation } from 'react-navigation';
+import MainMenu from '../components/menu';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component<NavigationInjectedProps> {
+    public static navigationOptions = {
+        title: 'Bulls n Cows',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        }
+    };
+
     public render(): ReactNode {
         return (
-            <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                <Text>Home Screen</Text>
-                <Button
-                    title="Go to details"
-                    // @ts-ignore
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <MainMenu />
             </View>
         )
     }
 }
+
+export default withNavigation(HomeScreen);
