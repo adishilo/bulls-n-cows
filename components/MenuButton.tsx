@@ -7,7 +7,7 @@ interface IMenuButtonProps {
     onPress: () => void
 }
 
-class MenuButton extends React.Component<IMenuButtonProps> {
+export default class MenuButton extends React.Component<IMenuButtonProps> {
     public render(): ReactNode {
         return (
             <View>

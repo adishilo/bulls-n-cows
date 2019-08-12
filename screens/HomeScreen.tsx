@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
-import MainMenu from '../components/menu';
+import MainMenu from '../components/MainMenu';
 import Constants from "../common/constants";
 
 class HomeScreen extends React.Component<NavigationInjectedProps> {
@@ -19,9 +19,10 @@ class HomeScreen extends React.Component<NavigationInjectedProps> {
                 flexDirection: "column",
                 alignItems: "stretch",
                 justifyContent: "flex-start"}}>
-                <MainMenu />
+                <Text>Bulls N Cows</Text>
+                <MainMenu navigation={this.props.navigation}/>
             </View>
-        )
+        );
     }
 }
 
