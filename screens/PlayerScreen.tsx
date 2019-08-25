@@ -11,15 +11,15 @@ export default class PlayerScreen extends React.Component<NavigationInjectedProp
     public constructor(props: Readonly<NavigationInjectedProps<NavigationParams>>) {
         super(props);
 
-        // this.state = {
-        //     numberChooseVisible: false
-        // };
+        this.state = {
+            numberChooseVisible: true
+        };
     }
 
     public render(): ReactNode {
         return (
             <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                <NumberChooseDialog isVisible={true} />
+                <NumberChooseDialog isVisible={this.state.numberChooseVisible} />
             </View>
         )
     }
