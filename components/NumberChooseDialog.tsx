@@ -1,9 +1,11 @@
 import React, {ReactNode} from 'react';
 import Dialog from 'react-native-dialog';
 import { View } from 'react-native';
+import { NavigationInjectedProps } from 'react-navigation';
 
-interface INumberChooseProps {
-    isVisible: boolean
+interface INumberChooseProps extends NavigationInjectedProps{
+    isVisible: boolean,
+    onNumberChosen: (chosenNumber: number) => void
 }
 
 export default class NumberChooseDialog extends React.Component<INumberChooseProps> {
@@ -14,8 +16,8 @@ export default class NumberChooseDialog extends React.Component<INumberChoosePro
                     <Dialog.Title>Number Choosing</Dialog.Title>
                     <Dialog.Description>Please Choose four distinct digits number.</Dialog.Description>
                     <Dialog.Input />
-                    <Dialog.Button label="OK" />
-                    <Dialog.Button label="Cancel" />
+                    <Dialog.Button label="OK" onPress={() => this.props.onNumberChosen(12)} />
+                    <Dialog.Button label="Cancel" onPress={() => this.props.navigation.navigate('Home')} />
                 </Dialog.Container>
             </View>
         )

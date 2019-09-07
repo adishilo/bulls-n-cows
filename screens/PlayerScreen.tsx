@@ -3,11 +3,14 @@ import {View, Button, TextInput} from 'react-native';
 import { NavigationInjectedProps, NavigationParams } from 'react-navigation';
 import NumberChooseDialog from "../components/NumberChooseDialog";
 
+ 
 interface IPlayerScreenState {
     numberChooseVisible: boolean
 }
 
 export default class PlayerScreen extends React.Component<NavigationInjectedProps, IPlayerScreenState> {
+    private playerNumber = 0;
+
     public constructor(props: Readonly<NavigationInjectedProps<NavigationParams>>) {
         super(props);
 
@@ -19,7 +22,10 @@ export default class PlayerScreen extends React.Component<NavigationInjectedProp
     public render(): ReactNode {
         return (
             <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                <NumberChooseDialog isVisible={this.state.numberChooseVisible} />
+                <NumberChooseDialog
+                    isVisible={this.state.numberChooseVisible}
+                    navigation={this.props.navigation}
+                    onNumberChosen={chosenNumber => { this.playerNumber = chosenNumber; console.log(chosenNumber); }} />
             </View>
         )
     }
