@@ -9,7 +9,7 @@ interface IPlayerScreenState {
 }
 
 export default class PlayerScreen extends React.Component<NavigationInjectedProps, IPlayerScreenState> {
-    private playerNumber = 0;
+    private playerNumber: string;
 
     public constructor(props: Readonly<NavigationInjectedProps<NavigationParams>>) {
         super(props);
@@ -25,7 +25,12 @@ export default class PlayerScreen extends React.Component<NavigationInjectedProp
                 <NumberChooseDialog
                     isVisible={this.state.numberChooseVisible}
                     navigation={this.props.navigation}
-                    onNumberChosen={chosenNumber => { this.playerNumber = chosenNumber; console.log(chosenNumber); }} />
+                    onNumberChosen={chosenNumber => {
+                        this.playerNumber = chosenNumber; console.log(chosenNumber);
+                        this.setState({
+                            numberChooseVisible: false
+                        });
+                    }} />
             </View>
         )
     }
