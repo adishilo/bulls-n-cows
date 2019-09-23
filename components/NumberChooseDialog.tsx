@@ -2,7 +2,6 @@ import React, {ReactNode} from 'react';
 import Dialog from 'react-native-dialog';
 import { View } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
-import { Color } from 'csstype';
 
 type InputState = 'init' | 'error' | 'accepted';
 
@@ -52,7 +51,6 @@ export default class NumberChooseDialog extends React.Component<INumberChoosePro
     }
 
     private onDialogTextChanged(newUserInput: string) {
-
         if (!/[0-9]{4}/.test(newUserInput)) {
             this.setState({
                 inputState: 'error'
@@ -67,6 +65,22 @@ export default class NumberChooseDialog extends React.Component<INumberChoosePro
             });
 
             return;
+        }
+
+        let pivotIndex = 1;
+        const numArray = Array.from(newUserInput);
+        for (let num of numArray) {
+            for (let i = pivotIndex; i < numArray.length; i++) {
+                if (numArray[i] === num) {
+                    this.setState({
+                        inputState: 'error'
+                    });
+
+                    return;
+                }
+            }
+
+            pivotIndex++;
         }
 
         this.setState({
