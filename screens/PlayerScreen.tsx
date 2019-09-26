@@ -1,9 +1,10 @@
-import React, {ReactNode} from 'react';
-import {View, Button, TextInput} from 'react-native';
+import React, { ReactNode } from 'react';
+import { View, Button, TextInput } from 'react-native';
 import { NavigationInjectedProps, NavigationParams } from 'react-navigation';
 import NumberChooseDialog from "../components/NumberChooseDialog";
 import HistoryItem from '../components/HistoryItem';
- 
+import MovesList from '../components/MovesList';
+
 interface IPlayerScreenState {
     numberChooseVisible: boolean
 }
@@ -21,7 +22,7 @@ export default class PlayerScreen extends React.Component<NavigationInjectedProp
 
     public render(): ReactNode {
         return (
-            <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <NumberChooseDialog
                     isVisible={this.state.numberChooseVisible}
                     navigation={this.props.navigation}
@@ -31,8 +32,7 @@ export default class PlayerScreen extends React.Component<NavigationInjectedProp
                             numberChooseVisible: false
                         });
                     }} />
-                <HistoryItem>
-                </HistoryItem>
+                <MovesList></MovesList>
             </View>
         )
     }
