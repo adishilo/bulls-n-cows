@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import { View, Button, TextInput } from 'react-native';
 import { NavigationInjectedProps, NavigationParams } from 'react-navigation';
 import NumberChooseDialog from "../components/NumberChooseDialog";
-import HistoryItem from '../components/HistoryItem';
 import MovesList from '../components/MovesList';
 
 interface IPlayerScreenState {

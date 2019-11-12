@@ -3,7 +3,8 @@ import { View, Text } from 'react-native';
  
 type HistoryItemProps = {
     guessedNumber: string,
-    score: string;
+    bulls: number;
+    cows: number;
 }
 export default class HistoryItem extends React.Component<HistoryItemProps> {
     public render(): ReactNode {
@@ -14,7 +15,8 @@ export default class HistoryItem extends React.Component<HistoryItemProps> {
                 justifyContent: "space-between"
             }}>
                 <Text>{this.props.guessedNumber}</Text>
-                <Text>{this.props.score}</Text>
+                <Text>{this.props.bulls}</Text>
+                <Text>{this.props.cows}</Text>
             </View>
         )
     }
