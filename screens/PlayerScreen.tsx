@@ -31,7 +31,18 @@ export default class PlayerScreen extends React.Component<NavigationInjectedProp
                             numberChooseVisible: false
                         });
                     }} />
-                <MovesList></MovesList>
+                <MovesList historyList={[
+            {
+                chosenNumber: 'abcd',
+                bulls: 2,
+                cows: 1
+            },
+            {
+                chosenNumber: '5678',
+                bulls: 0,
+                cows: 2
+            }
+        ]}></MovesList>
             </View>
         )
     }

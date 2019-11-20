@@ -3,7 +3,7 @@ import { View } from "react-native";
 import HistoryItem from "./HistoryItem";
 import { FlatList } from "react-native-gesture-handler";
 
-interface IMovesListState {
+interface IMovesListProp {
     historyList: Array<{
         chosenNumber: string,
         bulls: number,
@@ -11,33 +11,12 @@ interface IMovesListState {
     }>;
 }
 
-export default class MovesList extends React.Component<{}, IMovesListState> {
-    public constructor(props: {}) {
-        super(props);
-
-        this.state = {
-            historyList: []
-        }
-    }
-
+export default class MovesList extends React.Component<IMovesListProp> {
     public render(): ReactNode {
-        const list = [
-            {
-                chosenNumber: '1234',
-                bulls: 2,
-                cows: 1
-            },
-            {
-                chosenNumber: '5678',
-                bulls: 0,
-                cows: 2
-            }
-        ]
-
         return (
             <View>
                 <FlatList
-                    data={list}
+                    data={this.props.historyList}
                     renderItem={({item}) => <HistoryItem guessedNumber={item.chosenNumber} bulls={item.bulls} cows={item.cows} />}
                     keyExtractor={item => item.chosenNumber} />
             </View>
