@@ -1,14 +1,16 @@
-import React, { ReactNode } from "react";
-import { View } from "react-native";
-import HistoryItem from "./HistoryItem";
+import React, { ReactNode, ReactElement } from "react";
+import { View, Text } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import { Card } from "react-native-elements";
+
+type HistoryItem1 = {
+    guessedNumber: string,
+    bulls: number,
+    cows: number
+}
 
 interface IMovesListProp {
-    historyList: Array<{
-        chosenNumber: string,
-        bulls: number,
-        cows: number
-    }>;
+    historyList: Array<HistoryItem1>;
 }
 
 export default class MovesList extends React.Component<IMovesListProp> {
@@ -17,10 +19,25 @@ export default class MovesList extends React.Component<IMovesListProp> {
             <View>
                 <FlatList
                     data={this.props.historyList}
-                    renderItem={({item}) => <HistoryItem guessedNumber={item.chosenNumber} bulls={item.bulls} cows={item.cows} />}
-                    keyExtractor={item => item.chosenNumber} />
+                    renderItem={({item}) => this.createHistoryItemCard(item)}
+                    keyExtractor={item => item.guessedNumber} />
             </View>
         )
     }
 
+    private createHistoryItemCard(historyItem: HistoryItem1): ReactElement {
+        return (
+            <Card>
+                <View style={{
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-between"
+                }}>
+                    <Text>{historyItem.guessedNumber}</Text>
+                    <Text style={{ paddingLeft: 20 }}>{historyItem.bulls}</Text>
+                    <Text style={{ paddingLeft: 20 }}>{historyItem.cows}</Text>
+                </View>
+            </Card>
+        )
+    }
 }

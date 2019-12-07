@@ -32,17 +32,17 @@ export default class PlayerScreen extends React.Component<NavigationInjectedProp
                         });
                     }} />
                 <MovesList historyList={[
-            {
-                chosenNumber: 'abcd',
-                bulls: 2,
-                cows: 1
-            },
-            {
-                chosenNumber: '5678',
-                bulls: 0,
-                cows: 2
-            }
-        ]}></MovesList>
+                    {
+                        guessedNumber: 'abcd',
+                        bulls: 2,
+                        cows: 1
+                    },
+                    {
+                        guessedNumber: '5678',
+                        bulls: 0,
+                        cows: 2
+                    }
+                ]}></MovesList>
             </View>
         )
     }
